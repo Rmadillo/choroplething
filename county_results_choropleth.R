@@ -123,4 +123,17 @@ m$height = 800
 # Export as HTML file
 htmlwidgets::saveWidget(m, "election_map.html", selfcontained = TRUE)
 
+
+#### Google Earth KML ####
+
+library(plotKML)
+
+# Red to Blue color gradient, generated from 
+# https://www.strangeplanet.fr/work/gradient-generator/?c=20:FF0000:0000FF
+rd_bu_20_gradient = c("#FF0000", "#F1000D", "#E4001A", "#D60028", "#C90035", "#BB0043", "#AE0050", "#A1005D", "#93006B", "#860078", "#780086", "#6B0093", "#5D00A1", "#5000AE", "#4300BB", "#3500C9", "#2800D6", "#1A00E4", "#0D00F1", "#0000FF")
+
+# Opens in Google Earth automatically
+plotKML(leafmap["per_dem"], altitude=leafmap$total_votes/2, colour_scale = rd_bu_20_gradient)
+
+
 # End of file
